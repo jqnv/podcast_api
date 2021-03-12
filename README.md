@@ -20,6 +20,8 @@ import requests
 
 def my_app(): # returns all podcasts(100) through directory 'resul'
 def index() # returns podcasts filtered by name through directory 'resul'
+
+NOTE: to run the home page add '/my_app' at the end of the server name. Example: http://127.0.0.1:8000/my_app
 ```
 
 ## Contributing
