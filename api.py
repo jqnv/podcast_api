@@ -16,6 +16,8 @@ def my_app():
         name = request.args.get('name_1')
         return render_template(ind, params=resul, name=name)
 
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
 
