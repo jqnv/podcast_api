@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+
+{% block head %} <title>Podcast Catalog</title> {% endblock %}
+
+{% block body %}
+    <div class="my_title" align="center">
+        <h1>Podcast Catalog</h1>
+        <h3>Type the name of the podcast ou are looking for:</h3>
+    </div>
+    <div class="form" align="center">
+        <form action="/index.html" method="GET">
+            <div class="form-group">
+                <div class="text"> <input class="form-control form-control-lg" type="text" name="name_1"></div>
+                <div class="button"><input type="submit" class="btn btn-primary btn-lg"  value="Search"></div>
+        </form>
+    </div>
+    {% block content %}
+        {% if params %}
+              <div class="container">
+                  <div class="row">
+                               {% for num in range(0,params|length) %}
+                                   <div class="card">
+                                       <div class="card-header align-center">
+                                           <h5>Title: {{params[num].get('name')}}</h5>
+                                       </div>
+                                       <div class="card-body">
+                                       <a href="{{params[num].get('url')}}"><img class="card-img-top" src="{{params[num].get('artworkUrl100')}}" alt=""></a>
+                                       </div>
+                                       <div class="card-footer">
+                                           Artist: <a href="{{params[num].get('artistUrl')}}">{{params[num].get('artistName')}}</a>
+                                       </div>
+                                   </div>
+                               {% endfor %}
+                        </div>
+                    </div>
+              </div>
+            {% endif %}
+    {% endblock %}
+{% endblock %}
+
