@@ -7,14 +7,27 @@
         <h1>Podcast Catalog</h1>
         <h3>Type the name of the podcast ou are looking for:</h3>
     </div>
-    <div class="form" align="center">
-        <form action="/index.html" method="GET">
-            <div class="form-group">
-                <div class="text"> <input class="form-control form-control-lg" type="text" name="name_1"></div>
-                <div class="button"><input type="submit" class="btn btn-primary btn-lg"  value="Search"></div>
-        </form>
-    </div>
     {% block content %}
+        <div class="form" align="center">
+            <form action="/index.html" method="GET">
+                <div class="form-group">
+                    <div class="text"> <input class="form-control form-control-lg" type="text" name="name_1"></div>
+                    <div class="button">
+                        <input type="submit" class="btn btn-primary btn-lg"  name="tb" value="Top 20">
+                        <input type="submit" class="btn btn-primary btn-lg"  value="Search">
+                        <input type="submit" class="btn btn-primary btn-lg"  name="tb" value="Bottom 20">
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="JsonCheck" name="JsonCheck" value="yes">
+                        <label class="form-check-label lb-lg" style="" for="JsonCheck">  Save to a Json file</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        {%if name%}
+            <div class="container">{{params|length}} podcasts contains the text"{{name}}" </div>
+        {% endif %}
         {% if params %}
               <div class="container">
                   <div class="row">
