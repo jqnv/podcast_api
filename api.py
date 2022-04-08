@@ -1,10 +1,14 @@
 from flask import Flask, request,render_template
 import requests
 import json
+import logging
 import ctypes  # An included library with Python install.
 
 
 app=Flask(__name__)
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 ind="index.html"
 req_data = requests.get("https://rss.itunes.apple.com/api/v1/us/podcasts/top-podcasts/all/100/explicit.json")
